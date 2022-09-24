@@ -32,3 +32,10 @@ interface ISum {
 const add2: ISum = add;
 
 console.log(add2(2, 3, 3));
+
+/**
+ * 总结
+ */
+
+// 1. interface 就是集合某些特征的一个特定容器；
+// 2. class 也是一个某种事物的抽象容器，比如说一个人，应该有口鼻眼一样

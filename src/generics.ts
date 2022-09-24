@@ -86,3 +86,11 @@ const kp1: keyPair<number, string> = { key: 1, value: "name" };
 // 下面声明数组是一样的
 const arr2: Array<number> = [1, 2];
 const arr3: number[] = [1, 2];
+
+/**
+ * 总结
+ */
+
+// 1. 可以打破 TS类型推断，调用函数时，函数体会给调用者返回接收的参数、返回的数据类型。从而调用函数时，会有类型提示
+// 2. 可以约束类，interface。从而声明一个个特殊的容器
+// 3. 可以约束函数的参数特性，比如说继承某个interface属性、某个类型等

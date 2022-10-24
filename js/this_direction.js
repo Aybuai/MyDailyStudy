@@ -63,3 +63,26 @@ console.log(o3.fn()); // undefined，因为 const fn = o1.fn 进行了重新赋�
 //     return o1.fn.call(this)
 //   }
 // }
+
+/**
+ * 构造函数和this
+ */
+
+function Foo() {
+  this.user = "Lucas";
+  // 显式返回一个对象，则指向这个对象
+  const o = {};
+  return o;
+}
+
+const instance = new Foo();
+console.log(instance.user, "11");
+
+function Foo2() {
+  this.user = "Lucas";
+  // 显式返回一个基本类型，则仍然指向实例
+  return 1;
+}
+
+const instance2 = new Foo2();
+console.log(instance2.user, "22");

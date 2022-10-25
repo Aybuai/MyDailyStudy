@@ -86,3 +86,8 @@ function Foo2() {
 
 const instance2 = new Foo2();
 console.log(instance2.user, "22");
+
+/**
+ * 箭头函数中的this
+ * 指向最近的外层函数作用域
+ */

@@ -1,6 +1,7 @@
 ## Daily Study
 
 **日拱一卒无有尽，功不唐捐终入海。** 记录自己的每日学习，同时也起到督促的作用，养成终身学习的习惯。
+个人技术博客：[点我](https://blog.csdn.net/Aybuai?type=blog)
 
 ### JS
 

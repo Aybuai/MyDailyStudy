@@ -80,7 +80,7 @@ console.log(instance.user, "11");
 
 function Foo2() {
   this.user = "Lucas";
-  // 显式返回一个基本类型，则仍然指向实例
+  // 显式返回一个基本类型，则仍然指向实例。
   return 1;
 }
 

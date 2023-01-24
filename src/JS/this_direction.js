@@ -70,12 +70,12 @@ console.log(o3.fn()); // undefined，因为 const fn = o1.fn 进行了重新赋�
 
 function Foo() {
   this.user = "Lucas";
-  // 显式返回一个对象，则指向这个对象。
+  // 显式返回一个对象，则指向这个对象
   const o = {};
   return o;
 }
 
-const instance = new Foo(); 
+const instance = new Foo();
 console.log(instance.user, "11");
 
 function Foo2() {

@@ -35,3 +35,14 @@
   Vue 中全局状态管理系统，用于多个组件中数据共享。
 - **provide&inject**：<br>
   上层组件提供，下层组件注入使用。（适用于组件库编写）
+
+### 5、父子组件声明周期调用顺序？
+
+- **加载渲染过程**：<br>
+  父`beforeCreate` -> 父`created` -> 父`beforeMount` -> 子`beforeCreate` -> 子`created` -> 子`beforeMount` -> 子`mounted` -> 父`mounted`
+- **更新过程**：<br>
+  父`beforeUpdate` -> 子`beforeUpdate` -> 子`updated` -> 父`updated`
+- **销毁过程**：<br>
+  父`beforeDestroy` -> 子`beforeDestroy` -> 子`destroyed` -> 父`destroyed`
+- **全流程**：<br>
+  `beforeCreate` -> `created` -> `beforeMount` -> `mounted` -> `beforeUpdate` -> `updated` -> `beforeDestroy` -> `destroyed`

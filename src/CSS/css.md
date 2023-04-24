@@ -16,3 +16,8 @@
 - 使用`float`布局
 - 两侧使用 margin 负值，以便和中间内容横向重叠
 - 防止中间内容被两侧覆盖，一个用`padding`为两侧留白 一个用`margin`为两侧留白
+
+### 4、如何使用 flex 布局实现三点筛子
+
+- 父元素样式使用 `display: flex; justify-content: space-between;`
+- 子元素 item 样式使用 `.item:nth-child(2) { align-self: center }` `.item:nth-child(3) { align-self: flex-end }`

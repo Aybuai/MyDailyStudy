@@ -21,12 +21,11 @@
 - 小程序里面的 JavaScript 代码就是被 JavaScriptCore 执行的
 - JS 代码由 JS 引擎转换成 CPU 指令来执行
 
-## V8 引擎的原理
+## 什么是 V8 引擎
 
 - V8 是用 C++ 编写的开源高性能 JavaScript 和 WebAssembly 引擎，它已被用于 Chrome 和 Node.js 等。
 - 可以运行在 Windows 7+，macOS 10.12+和使用 x64，IA-32，ARM 或 MIPS 处理器的 Linux 系统上。
 - V8 可以独立运行，也可以嵌入到任何 C++ 应用程序中。
-  ![V8引擎](../assets/V8引擎.jpg)
 
 ## V8 执行详情
 
@@ -39,3 +38,4 @@
   **注释：**<br>
   bytecode 字节码的作用：用来跨平台：转换成 bytecode 字节码后可以在 iOS、Windows、Linux 等系统上执行。<br>
   bytecode 字节码可以再通过 TurboFan 模块把重复执行的代码逻辑转换成机器码，然后各平台`高效率`执行。如果后面变更再转交给 bytecode 字节码重新翻译成机器码执行。<br>
+  ![V8引擎](../assets/V8引擎.jpg)

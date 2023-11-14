@@ -41,3 +41,33 @@
   **bytecode 字节码的作用**：用来跨平台转换成 bytecode 字节码后可以在 iOS、Windows、Linux 等系统上执行。<br>
   bytecode 字节码可以再通过 TurboFan 模块把重复执行的代码逻辑转换成机器码，然后各平台`高效率`执行。如果后面重复代码逻辑变更再转交给 bytecode 字节码重新翻译成机器码执行。<br>
   ![V8引擎](../assets/V8引擎.jpg)
+
+## JavaScript 代码如何执行的
+
+当浏览器执行下面的代码时：<br>
+
+```javascript
+var name = "aybuai";
+
+var num1 = 10;
+var num2 = 20;
+var result = num1 + num2;
+```
+
+首先会先创建一个 Global Object，里面存在 String、Date、Number 等类以及类似 setTimeout 函数等，以及会声明创建的属性，如下：<br>
+
+```javascript
+// 伪实现
+var globalObject = {
+  String: '类'，
+  Date: '类'，
+  setTimeout: '函数',
+  window: globalObject,
+  name: undefined,
+  num1: undefined,
+  num2: undefined,
+  result: undefined
+}
+```
+
+然后又会创建一个`执行上下文栈 - ECS（execution context stack）`，然后把这个 Global Object 放入到栈中，栈中对象里面有 VO 对象就是 Global Object 对象，最后按顺序执行代码，依次赋值，如果未赋值之前打印的话就是 `undefined`，这就是 ES5 的变量提升。<br>

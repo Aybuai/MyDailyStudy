@@ -31,12 +31,13 @@
 
 - Blink 内核把源码交给 V8，Stream 获取到源码并且进行编码转换
 - Scanner 会进行`词法分析`，词法分析会将代码转换成 tokens
-- tokens 会被转换成 AST，经过 Parser 和 PreParser：<br>
+- tokens 经过 Parser 和 PreParser，会被转换成 AST：<br>
   1、Parser 就是直接把 tokens 转成 AST 树<br>
-  2、PreParser 叫预解析，为什么需要预解析？因为一开始就将所有的 JavaScript 代码全部转换 AST，会降低效率。所以 V8 实现了一个 `Lazy Parsing（延迟解析）`，作用是将不必要的函数预解析，就是暂时解析需要的内容，而对`函数的全量解析`是在`函数被调用时`才会进行。<br>
+  2、PreParser 叫预解析，为什么需要预解析？<br>
+  因为一开始就将所有的 JavaScript 代码全部转换 AST，会降低效率。所以 V8 实现了一个 `Lazy Parsing（延迟解析）`，作用是将不必要的函数预解析，就是暂时解析需要的内容，而对`函数的全量解析`是在`函数被调用时`才会进行。<br>
   **整个流程：**<br>
   JavaScript 代码 -> Parse -> AST 抽象语法树 -> Ignition -转换成字节码-> bytecode 字节码 -> CPU 运行的机器指令。<br>
   **注释：**<br>
   **bytecode 字节码的作用**：用来跨平台转换成 bytecode 字节码后可以在 iOS、Windows、Linux 等系统上执行。<br>
-  bytecode 字节码可以再通过 TurboFan 模块把重复执行的代码逻辑转换成机器码，然后各平台`高效率`执行。如果后面变更再转交给 bytecode 字节码重新翻译成机器码执行。<br>
+  bytecode 字节码可以再通过 TurboFan 模块把重复执行的代码逻辑转换成机器码，然后各平台`高效率`执行。如果后面重复代码逻辑变更再转交给 bytecode 字节码重新翻译成机器码执行。<br>
   ![V8引擎](../assets/V8引擎.jpg)

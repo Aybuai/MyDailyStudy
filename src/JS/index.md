@@ -70,4 +70,6 @@ var globalObject = {
 }
 ```
 
-然后又会创建一个`执行上下文栈 - ECS（execution context stack）`，然后把这个 Global Object 放入到栈中，栈中对象里面有 VO 对象就是 Global Object 对象，最后按顺序执行代码，依次赋值，如果未赋值之前打印的话就是 `undefined`，这就是 ES5 的变量提升。<br>
+然后又会创建一个`执行上下文栈 - ECS（execution context stack）`，当要执行全局代码的时候会创建一个`全局执行上下文 - GEC（global execution context）`,然后把这个全局执行上下文放入到栈中，执行上下文有两部分，一个是 VO 对象，就是指向 Global Object 对象，另一个是按顺序执行代码，依次赋值，如果未赋值之前打印的话就是 `undefined`，这就是 ES5 的变量提升。<br>
+
+## 全局代码执行顺序

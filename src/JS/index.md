@@ -73,3 +73,40 @@ var globalObject = {
 然后又会创建一个`执行上下文栈 - ECS（execution context stack）`，当要执行全局代码的时候会创建一个`全局执行上下文 - GEC（global execution context）`,然后把这个全局执行上下文放入到栈中，执行上下文有两部分，一个是 VO 对象，就是指向 Global Object 对象，另一个是按顺序执行代码，依次赋值，如果未赋值之前打印的话就是 `undefined`，这就是 ES5 的变量提升。<br>
 
 ## 全局代码执行顺序（函数）
+
+```javascript
+var name = "Aybuai";
+
+foo(123);
+
+function foo(num) {
+  console.log(m);
+  var m = 10;
+  var n = 20;
+  console.log("foo");
+}
+```
+
+如上代码，js 引擎首先会编译成下面的形式：<br>
+
+```javascript
+// 伪实现
+var globalObject = {
+  window: globalObject,
+  name: undefined,
+  foo: 0xa00(16进制引用地址)
+}
+
+//存储函数空间（foo），0xa00；空间包含两部分，分别是：
+1、[[scope]]: parent scope
+2、函数的执行体（代码块）
+```
+
+编译完成后，开始自上而下的执行，首先会给`name`赋值，调用 foo 函数，会自动生成函数执行上下文 - FEC（Function Execution Context），里面也是包含两部分，分别是：<br>
+
+- VO，对应的是 AO（Activation Object），这个对象包含了函数里面声明的 num、m、n 参数等，
+- 开始执行函数代码，clg（打印）等
+
+函数上下文执行完之后，调用栈（ECS）会把函数上下文推出，并将其销毁，AO 由于没有引用也会被销毁<br>
+调用图解：<br>
+![函数执行顺序](../assets/函数执行顺序.png)

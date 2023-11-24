@@ -21,7 +21,7 @@
 - 小程序里面的 JavaScript 代码就是被 JavaScriptCore 执行的
 - JS 代码由 JS 引擎转换成 CPU 指令来执行
 
-## 什么是 V8 引擎
+## 什么是 V8 引擎？
 
 - V8 是用 C++ 编写的开源高性能 JavaScript 和 WebAssembly 引擎，它已被用于 Chrome 和 Node.js 等。
 - 可以运行在 Windows 7+，macOS 10.12+和使用 x64，IA-32，ARM 或 MIPS 处理器的 Linux 系统上。

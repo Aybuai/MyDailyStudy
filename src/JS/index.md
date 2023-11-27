@@ -104,8 +104,8 @@ var globalObject = {
 
 编译完成后，开始自上而下的执行，首先会给`name`赋值，调用 foo 函数，会自动生成函数执行上下文 - FEC（Function Execution Context），里面也是包含两部分，分别是：<br>
 
-- VO，对应的是 AO（Activation Object），这个对象包含了函数里面声明的 num、m、n 参数等，
-- 开始执行函数代码，clg（打印）等
+- VO，对应的是 AO（Activation Object），这个对象包含了函数里面声明的 num、m、n 参数等。
+- 开始执行函数代码，clg（打印）等。
 
 函数上下文执行完之后，调用栈（ECS）会把函数上下文推出，并将其销毁，AO 由于没有引用也会被销毁<br>
 

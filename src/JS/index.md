@@ -18,8 +18,8 @@
 - 以 WebKit 为例，WebKit 由两部分组成，分别是：<br>
   `WebCore`：负责 HTML 解析、布局、渲染等。<br>
   `JavaScriptCore`：解析、执行 JavaScript 代码<br>
-- 小程序里面的 JavaScript 代码就是被 JavaScriptCore 执行的。
-- JS 代码由 JS 引擎转换成 CPU 指令来执行。
+- 小程序里面的 JavaScript 代码就是被 JavaScriptCore 执行的
+- JS 代码由 JS 引擎转换成 CPU 指令来执行
 
 ## 什么是 V8 引擎？
 

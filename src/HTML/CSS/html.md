@@ -61,3 +61,45 @@ a:hover { color: #FF00FF }
 ### 7、vue scoped 能做样式隔离的原理？
 
 通过使用 postcss 后处理器给类别增加一个用 hash 值组成的属性选择器，data-v-hash 值 保证全局唯一。
+
+### 8、css 优先级是怎样计算的？
+
+!important 优先级最高 > 内联样式权重 1000 > id 选择器权重 100 > 类选择器、属性选择器、伪类选择器权重 10 > 标签选择器、伪元素选择器权重 1 > 子选择器、后代选择器、兄弟选择器、通配符选择器权重 0 > 继承的样式没有权重
+
+### 9、BFC 是什么？
+
+BFC（Block Formatting Context）块级格式化上下文，是 Web 页面中盒模型布局的 CSS 渲染模式，指一个独立的渲染区域或者说是一个隔离的独立容器。<br>
+
+**BFC 形成条件：**<br>
+
+- 1、浮动元素，float 除 none 以外的值；
+- 2、定位元素，position（absolute，fixed）；
+- 3、display 为以下其中之一的值 inline-block，table-cell，table-caption；
+- 4、overflow 除了 visible 以外的值（hidden，auto，scroll）；
+
+**BFC 特性：** <br>
+
+- 1.内部的 Box 会在垂直方向上一个接一个的放置；
+- 2.垂直方向上的距离由 margin 决定；（解决垂直外边距重叠问题）
+- 3.bfc 的区域不会与 float 的元素区域重叠；（防止浮动文字环绕）
+- 4.计算 bfc 的高度时，浮动元素也参与计算；（清除浮动）
+- 5.bfc 就是页面上的一个独立容器，容器里面的子元素不会影响外面元素；
+
+### 10、position 有哪些值？分别是干嘛的？
+
+- static：position 默认值，忽略 left、top、right、bottom 和 z-index 属性
+- relative：相对定位，使用场景：子元素相对于父元素进行定位。
+- absolute：绝对定位，指给元素设置绝对定位。有两种情况：
+  - a、祖先元素设置了 relative、absolute，就相对祖先元素绝对定位。
+  - b、没有设置 position 属性的祖先元素，相对 body 进行定位。
+- fixed：固定在某一个地方，fixed 元素总是相对于 body 定位的。使用场景：`回到顶部`、`侧边栏或广告图`
+- inherit：继承父元素的 position 属性
+- sticky：当元素在容器中被滚动超过指定的偏移值时，元素会固定在容器的指定位置（相当于 fixed）。
+
+### 11、flex：1 代表什么？
+
+实际上是 `flex-grow`、`flex-shrink` 和 `flex-basis` 三个属性的缩写<br>
+
+- flex-grow：定义项目的的放大比例；默认为 0，即 即使存在剩余空间，也不会放大；
+- flex-shrink：定义项目的缩小比例；默认为 1，即 如果空间不足，该项目将缩小
+- flex-basis： 定义在分配多余空间之前，项目占据的主轴空间（main size），浏览器根据此属性计算主轴是否有多余空间；默认值为 auto，即 项目原本大小。

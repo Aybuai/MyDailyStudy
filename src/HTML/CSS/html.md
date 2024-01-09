@@ -103,3 +103,65 @@ BFC（Block Formatting Context）块级格式化上下文，是 Web 页面中盒
 - flex-grow：定义项目的的放大比例；默认为 0，即 即使存在剩余空间，也不会放大；
 - flex-shrink：定义项目的缩小比例；默认为 1，即 如果空间不足，该项目将缩小
 - flex-basis： 定义在分配多余空间之前，项目占据的主轴空间（main size），浏览器根据此属性计算主轴是否有多余空间；默认值为 auto，即 项目原本大小。
+
+### 12、css 画三角形？
+
+CSS 绘制三角形主要用到的是 border 属性，也就是边框。<br>
+
+箭头向下的三角形：<br>
+
+```css
+div {
+  width: 0;
+  height: 0;
+  border-top: 50px solid red;
+  border-right: 50px solid transparent;
+  border-left: 50px solid transparent;
+}
+```
+
+### 13、手写代码单行文本，多行文本字数过多显示...？
+
+- 单行文本溢出
+
+```css
+overflow: hidden; // 溢出隐藏
+text-overflow: ellipsis; // 溢出用省略号显示
+white-space: nowrap; // 规定段落中的文本不进行换行
+```
+
+- 多行文本溢出
+
+```css
+overflow: hidden; // 溢出隐藏
+text-overflow: ellipsis; // 溢出用省略号显示
+display: -webkit-box; // 作为弹性伸缩盒子模型显示。
+-webkit-box-orient: vertical; // 设置伸缩盒子的子元素排列方式：从上到下垂直排列
+-webkit-line-clamp: 3; // 显示的行数
+```
+
+### 14、css 怎么画 0.5px 的线？
+
+- 采用 transform: scale()的方式，该方法用来定义元素的 2D 缩放转换：
+
+```javascript
+transform: scale(0.5, 0.5);
+```
+
+- 采用 meta viewport 的方式：
+
+```javascript
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5"
+/>
+```
+
+### 15、css3 怎么开启 GPU 加速？（css3 怎么开启硬件加速？）
+
+浏览器在处理下面的 css 的时候，会使用 GPU 渲染<br>
+
+- transform（当 3D 变换的样式出现时会使用 GPU 加速）
+- opacity
+- filter
+- will-change

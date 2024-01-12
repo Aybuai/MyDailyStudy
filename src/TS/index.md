@@ -134,3 +134,111 @@ let message: any = "hello";
 - **unknown 类型：** 表示未知类型，即不确定具体类型的变量。与 any 不同，使用 unknown 类型后，该变量在没有进行类型检查或类型断言之前，不能被赋值给其他变量或进行任何操作。
 
 ### 5、Object 对象类型？
+
+和 JS 声明形式一致，只是 JS 是 `key to value` 的形式，TS 是 `key to type` 的形式。<br>
+
+### 6、type 、interface 、 class 之间的区别？
+
+**1、type**<br>
+
+`type` 是 TypeScript 中用于定义类型别名、联合类型、交叉类型等复杂类型的声明方式。它在编译后的 JavaScript 代码中被移除，因为它们仅在编译阶段用于类型检查。换句话说，`type` 不需要运行时信息。<br>
+
+- **类型别名（Type Aliases）：** 类型别名是给一个类型起一个新名字。例如：<br>
+
+```typescript
+type StringOrNumber = string | number;
+```
+
+- **联合类型（Union Types）：** 联合类型表示一个值可以是多个类型中的一种。例如：<br>
+
+```typescript
+type StringOrNumber = string | number;
+```
+
+- **交叉类型（Intersection Types）：** 交叉类型表示一个值必须满足多个类型的要求。例如：<br>
+
+```typescript
+type Name = { name: string };
+type Age = { age: number };
+type Person = Name & Age;
+```
+
+- **不需要运行时信息：**<br>
+
+在 TypeScript 中，有些类型信息仅在编译时起作用，而在运行时则不存在。例如，`type` 和 `interface` 定义的类型信息在编译后的 JavaScript 代码中被移除，因为它们仅在编译阶段用于类型检查。相比之下，`class` 定义的类型信息会保留在编译后的代码中，因为它们包含实际的属性和方法实现，这些信息在运行时是必需的。<br>
+
+**2、interface**<br>
+
+`interface` 主要用于定义对象的类型和形状。它支持继承和实现，因此非常适合创建复杂的对象类型。和 `type` 一样，`interface` 定义的类型信息在编译后的代码中被移除。<br>
+
+`interface` 可以通过关键字 `extends` 实现接口继承，通过关键字 `implements` 实现接口实现。这让我们可以创建具有多层次的类型结构。<br>
+
+例如：<br>
+
+```typescript
+interface Animal {
+  name: string;
+  speak(): void;
+}
+
+interface Dog extends Animal {
+  breed: string;
+}
+
+class Labrador implements Dog {
+  name: string;
+  breed: string;
+
+  constructor(name: string, breed: string) {
+    this.name = name;
+    this.breed = breed;
+  }
+
+  speak() {
+    console.log(`${this.name} says woof!`);
+  }
+}
+```
+
+**3、class**<br>
+
+`class` 是一种定义类型和实现的方式。它既包含类型信息，也包含实际的属性和方法实现。与 `type` 和 `interface` 不同，`class` 定义的类型信息会保留在编译后的代码中，因为它们在运行时是必需的。<br>
+
+`class` 可以通过关键字 `extends` 实现类继承，还可以通过关键字 `implements` 实现接口实现。这使得 `class` 成为创建具有多层次结构和行为的对象的理想选择。<br>
+
+```typescript
+class User {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  sayHello(): void {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+class Students extends User {
+  role: string;
+
+  constructor(name: string, age: number, role: string) {
+    super(name, age);
+    this.role = role;
+  }
+}
+```
+
+**总结：**<br>
+
+在 TypeScript 中，`type`、`interface` 和 `class` 分别具有自己的用途和特点。<br>
+
+- `type` 适用于定义类型别名、联合类型、交叉类型等，并且不需要运行时信息。
+- `interface` 主要用于定义对象的类型和形状，支持继承和实现。
+- `class` 既包含类型信息，也包含实际的属性和方法实现。在实际开发中，我们应根据需求选择合适的类型声明方式。
+
+虽然 `type` 和 `interface` 在很多场景下可以互换使用，但它们在某些特定场景下有着各自的优势。`type` 更适用于组合不同类型，如联合类型、交叉类型等，而 `interface` 更适用于定义对象的形状，特别是在面向对象编程中。`class` 则提供了完整的类型定义和实现，可以在运行时进行实例化和操作。<br>
+
+在实践中，我们应该根据实际需求和场景选择合适的类型声明方式。例如，在定义一个复杂的对象类型时，可以使用 `interface`；在组合不同类型时，可以使用 `type`；在创建具有行为的对象时，可以使用 `class`。<br>

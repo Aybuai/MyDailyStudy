@@ -19,5 +19,38 @@
 
 ### 4、如何使用 flex 布局实现三点筛子
 
-- 父元素样式使用 `display: flex; justify-content: space-between;`
-- 子元素 item 样式使用 `.item:nth-child(2) { align-self: center }` `.item:nth-child(3) { align-self: flex-end }`
+HTML：<br>
+
+```html
+<div class="wrapper">
+  <div class="item">·</div>
+  <div class="item">·</div>
+  <div class="item">·</div>
+</div>
+```
+
+CSS：<br>
+
+- 父元素样式使用
+
+```css
+.wrapper {
+  height: 100px;
+  width: 100px;
+  border: solid 1px red;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+```
+
+- 子元素 item 样式使用
+
+```css
+.item:nth-child(2) {
+  align-self: center;
+}
+.item:nth-child(3) {
+  align-self: flex-end;
+}
+```

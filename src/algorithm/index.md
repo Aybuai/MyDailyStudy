@@ -119,4 +119,4 @@ const dec2bin = (decNumber) => {
 };
 ```
 
-### 队列（Queue）=> 一种受限的线性表，先进先出（FIFO => first in first out）。
+### 队列（Queue）=> 一种受限的线性表，先进先出（FIFO => first in first out）

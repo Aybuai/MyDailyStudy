@@ -207,3 +207,74 @@ const passGame = (nameList, num) => {
 const names = ["Lucy", "Tom", "Lily", "Xiaoming", "Xiaohong"];
 const index = passGame(names, 3); // 3  =>  Xiaoming
 ```
+
+优先级队列
+
+```js
+class PriorityQueue {
+  // 内置对象
+  QueueElement = class {
+    constructor(element, priority) {
+      this.element = element;
+      this.priority = priority;
+    }
+  };
+
+  items = [];
+
+  enqueue(element, priority) {
+    // 创建 QueueElement 对象
+    const qe = new this.QueueElement(element, priority);
+
+    // 判断队列是否为空
+    if (this.items.length === 0) {
+      this.items.push(qe);
+    } else {
+      let added = false;
+      for (let i = 0; i < this.items.length; i++) {
+        if (qe.priority < this.items[i].priority) {
+          this.items.splice(1, 0, qe);
+          added = true;
+          break;
+        }
+      }
+
+      if (!added) {
+        this.items.push(qe);
+      }
+    }
+  }
+
+  dequeue() {
+    return this.items.shift();
+  }
+
+  front() {
+    return this.items[0];
+  }
+
+  isEmpty() {
+    return this.items.length !== 0;
+  }
+
+  size() {
+    return this.items.length;
+  }
+
+  toString() {
+    let str = "";
+    for (let i = 0; i < this.items.length; i++) {
+      str += `${this.items[i].element} ${this.items[i].priority} `;
+    }
+    return str;
+  }
+}
+
+const qe = new PriorityQueue();
+qe.enqueue("ac", 1);
+qe.enqueue("ab", 200);
+qe.enqueue("qw", 110);
+qe.enqueue("qewf", 50);
+
+console.log(qe);
+```

@@ -120,3 +120,90 @@ const dec2bin = (decNumber) => {
 ```
 
 ### 队列（Queue）=> 一种受限的线性表，先进先出（FIFO => first in first out）
+
+#### 队列的操作
+
+- enqueue(element) 添加新元素到队列
+- dequeue() 移除首个元素
+- front() 返回队列第一个元素，但不删除该元素
+- isEmpty() 空队列返回 true，否则反之
+- size() 返回队列的元素个数
+- toString() 将队列结构内容以字符串形式返回
+
+```js
+// 可以使用数组 or 链表实现，链表实现性能更高。
+class Queue {
+  items = [];
+
+  enqueue(element) {
+    this.items.push(element);
+  }
+
+  dequeue() {
+    return this.items.shift();
+  }
+
+  front() {
+    return this.items[0];
+  }
+
+  isEmpty() {
+    return this.items.length !== 0;
+  }
+
+  size() {
+    return this.items.length;
+  }
+
+  toString() {
+    let str = "";
+    for (let i = 0; i < this.items.length; i++) {
+      str += `${this.items[i]} `;
+    }
+    return str;
+  }
+}
+
+const queue = new Queue();
+
+queue.enqueue("abc");
+queue.enqueue("cba");
+queue.enqueue("nba");
+
+console.log(queue); // abc cba nba
+
+queue.dequeue();
+console.log(queue); // cba nba
+
+console.log(queue.front()); // cba
+console.log(queue.size()); // 2
+console.log(queue.isEmpty()); // false
+```
+
+击鼓传花
+
+```js
+const passGame = (nameList, num) => {
+  // 1、声明队列
+  const queue = new Queue();
+
+  // 2、存放
+  for (let i = 0; i < nameList.length; i++) {
+    queue.enqueue(nameList[i]);
+  }
+
+  // 3、遍历最后一个
+  while (queue.size() > 1) {
+    for (let i = 0; i < num - 1; i++) {
+      queue.enqueue(queue.dequeue());
+    }
+    queue.dequeue();
+  }
+  const endName = queue.front();
+
+  return nameList.indexOf(endName);
+};
+
+const names = ["Lucy", "Tom", "Lily", "Xiaoming", "Xiaohong"];
+const index = passGame(names, 3); // 3  =>  Xiaoming
+```

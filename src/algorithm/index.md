@@ -274,7 +274,7 @@ const qe = new PriorityQueue();
 qe.enqueue("ac", 1);
 qe.enqueue("ab", 200);
 qe.enqueue("qw", 110);
-qe.enqueue("qewf", 50);
+qe.enqueue("good job", 50);
 
 console.log(qe);
 ```

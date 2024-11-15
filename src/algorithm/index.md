@@ -205,7 +205,7 @@ const passGame = (nameList, num) => {
 };
 
 const names = ["Lucy", "Tom", "Lily", "Xiaoming", "Xiaohong"];
-const index = passGame(names, 3); // 3  =>  Xiaoming
+const index = passGame(names, 3); // 3  => Xiaoming
 ```
 
 优先级队列

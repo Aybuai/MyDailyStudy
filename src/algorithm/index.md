@@ -329,5 +329,49 @@ class LinkedList {
     // 这种写法适用大多数语言
     this.length += 1;
   }
+
+  // toString 方法
+  toString() {
+    // 定义变量
+    let current = this.head;
+    let listString = "";
+
+    while (current) {
+      listString += `${current.data} `;
+      current = current.next;
+    }
+    return listString;
+  }
+
+  insert(position, data) {
+    // 对 position 进行越界判断
+    if (position < 0 || position > this.length) return false;
+
+    // 根据 data 创建 newNode
+    const newNode = new this.Node(data);
+
+    // 判断插入位置是否为第一个
+    if (position === 0) {
+      newNode.next = this.head;
+      this.head = newNode;
+    } else {
+      let index = 0;
+      let current = this.head;
+      let previous = null;
+
+      while (index++ < position) {
+        previous = current;
+        current = current.next;
+      }
+
+      newNode.next = current;
+      previous.next = newNode;
+    }
+
+    // length +1
+    this.length += 1;
+
+    return true;
+  }
 }
 ```

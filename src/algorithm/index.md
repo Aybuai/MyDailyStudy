@@ -343,6 +343,7 @@ class LinkedList {
     return listString;
   }
 
+  // 插入元素
   insert(position, data) {
     // 对 position 进行越界判断
     if (position < 0 || position > this.length) return false;

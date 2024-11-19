@@ -278,3 +278,56 @@ qe.enqueue("good job", 50);
 
 console.log(qe);
 ```
+
+### 单向链表
+
+- append(element) 向列表尾部添加一个新元素
+- insert(position, element) 向列表指定位置插入一个新元素
+- get(position) 获取对应位置元素
+- indexOf(element) 返回元素在列表中的索引，如果列表没有该元素则返回 -1
+- update(position) 修改某个位置的元素
+- removeAt(position) 从列表的特定位置移除一项
+- remove(element) 从列表中移除一项
+- isEmpty() 如果链表中不包含任何元素，返回 true，如果链表长度大于 0 则返回 false
+- size() 返回链表包含的元素个数，与数组的 length 属性类似
+- toString() 由于列表项使用了 Node 类，就需要重写继承自 JS 对象默认的 toString 方法，让其只输出元素的值。
+
+```js
+class LinkedList {
+  // 内部节点类
+  Node = class {
+    constructor(data) {
+      this.data = data;
+      this.next = null;
+    }
+  };
+  // 属性
+  head = null;
+  length = 0;
+
+  // 追加方法
+  append(data) {
+    // 1、创建新节点
+    const newNode = new this.Node(data);
+
+    // 判断是否是第一个节点
+    if (this.length === 0) {
+      // 是第一个节点
+      this.head = newNode;
+    } else {
+      // 不是第一个节点
+      // 找到最后一个节点
+      let current = this.head;
+
+      while (current.next) {
+        current = current.next;
+      }
+
+      // 最后节点的 next 指向新的节点
+      current.next = newNode;
+    }
+    // 这种写法适用大多数语言
+    this.length += 1;
+  }
+}
+```

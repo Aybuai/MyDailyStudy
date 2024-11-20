@@ -590,5 +590,33 @@ class DoublyLinkedList {
 
     return true;
   }
+
+  // get 方法
+  get(position) {
+    // position 越界判断
+    if (position < 0 || position >= this.length) return null;
+
+    if (this.length / 2 > position) {
+      // this.length / 2 > position，从前往后遍历
+      let current = this.head;
+      let index = 0;
+
+      while (index++ < position) {
+        current = current.next;
+      }
+
+      return current.data;
+    } else {
+      // this.length / 2 < position，从后往前遍历
+      let current = this.tail;
+      let index = this.length - 1;
+
+      while (index-- > position) {
+        current = current.prev;
+      }
+
+      return current.data;
+    }
+  }
 }
 ```

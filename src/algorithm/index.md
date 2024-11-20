@@ -544,5 +544,51 @@ class DoublyLinkedList {
 
     return resultString;
   }
+
+  // insert 方法
+  insert(position, data) {
+    // 对 position 进行越界判断
+    if (position < 0 || position > this.length) return false;
+
+    // 根据 data 创建 newNode
+    const newNode = new this.Node(data);
+
+    // 判断是否是第一个元素
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      if (position === 0) {
+        // 当 position 为 0 时
+        this.head.prev = newNode;
+        newNode.next = this.head;
+        this.head = newNode;
+      } else if (position === this.length) {
+        // 当 position 等于 链表长度时，相当于 append
+        newNode.prev = this.tail;
+        this.tail.next = newNode;
+        this.tail = newNode;
+      } else {
+        // 其他情况，中间插入
+        let current = this.head;
+        let index = 0;
+
+        while (index++ < position) {
+          current = current.next;
+        }
+
+        // 修改指针
+        newNode.next = current;
+        newNode.prev = current.prev;
+        current.prev.next = newNode;
+        current.prev = newNode;
+      }
+    }
+
+    // length +1
+    this.length += 1;
+
+    return true;
+  }
 }
 ```

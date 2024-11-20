@@ -467,6 +467,19 @@ class LinkedList {
 
 ### 双向链表
 
+- append(element) 向列表尾部添加新元素
+- insert(position, element) 向列表的特定位置插入一个新元素
+- get(position) 获取对应位置的元素
+- indexOf(element) 返回元素在列表中的索引，如果没有则返回 -1
+- update(position, element) 修改某个位置的元素
+- removeAt(position) 从列表的特定位置移除一项
+- remove(element) 从列表中移除一项
+- isEmpty() 链表是否包含元素，包含返回 true，否则返回 false
+- size() 返回链表包含的元素个数，与数组的 length 属性类似
+- toString() 由于列表使用了 Node 类，就需要重写继承自 JS 对象默认的 toString 方法，让其只输出元素的值
+- forwardString() 返回正向遍历的节点字符串形式
+- backwardString() 返回反向遍历的节点字符串形式
+
 ```js
 class DoublyLinkedList {
   // 内部类：节点类
@@ -482,5 +495,54 @@ class DoublyLinkedList {
   head = null; // 链表头
   tail = null; // 链表尾
   length = 0; // 链表长度
+
+  append(data) {
+    // 创建 node 节点
+    const newNode = new this.Node(data);
+
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.prev = this.tail;
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+
+    // 长度 +1
+    this.length += 1;
+  }
+
+  toString() {
+    return this.backwardString();
+  }
+
+  forwardString() {
+    // 定义变量
+    let current = this.tail;
+    let resultString = "";
+
+    // 依次向前遍历，获取每一个节点
+    while (current) {
+      resultString += `${current.data} `;
+      current = current.prev;
+    }
+
+    return resultString;
+  }
+
+  backwardString() {
+    // 定义变量
+    let current = this.head;
+    let resultString = "";
+
+    // 依次向后遍历，获取每一个节点
+    while (current) {
+      resultString += `${current.data} `;
+      current = current.next;
+    }
+
+    return resultString;
+  }
 }
 ```

@@ -464,3 +464,23 @@ class LinkedList {
   }
 }
 ```
+
+### 双向链表
+
+```js
+class DoublyLinkedList {
+  // 内部类：节点类
+  Node = class {
+    constructor(data) {
+      this.data = data;
+      this.prev = null;
+      this.next = null;
+    }
+  };
+
+  // 属性
+  head = null; // 链表头
+  tail = null; // 链表尾
+  length = 0; // 链表长度
+}
+```

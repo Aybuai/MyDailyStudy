@@ -374,5 +374,35 @@ class LinkedList {
 
     return true;
   }
+
+  // 获取元素
+  get(position) {
+    // 越界判断
+    if (position < 0 || position >= this.length) return null;
+
+    // 获取元素
+    let current = this.head;
+    let index = 0;
+    while (index++ < position) {
+      current = current.next;
+    }
+    return current.data;
+  }
+
+  // 查询元素索引值
+  indexOf(data) {
+    let current = this.head;
+    let index = 0;
+
+    while (current) {
+      if (current.data === data) {
+        return index;
+      }
+      current = current.next;
+      index += 1;
+    }
+
+    return -1;
+  }
 }
 ```

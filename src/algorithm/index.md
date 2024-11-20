@@ -420,5 +420,47 @@ class LinkedList {
     current.data = data;
     return true;
   }
+
+  // 删除某个元素
+  removeAt(position) {
+    // 越界判断
+    if (position < 0 || position >= this.length) return null;
+
+    let current = this.head;
+    // 判断是否删除第一个元素
+    if (position === 0) {
+      this.head = this.head.next;
+    } else {
+      let index = 0;
+      let previous = null;
+      while (index++ < position) {
+        previous = current;
+        current = current.next;
+      }
+      // 前一个元素的 next 指向当前元素的 next，即代表删除当前元素
+      previous.next = current.next;
+    }
+
+    this.length -= 1;
+
+    return current.data;
+  }
+
+  // remove 方法
+  remove(data) {
+    // 得到元素索引
+    const position = this.indexOf(data);
+
+    // 删除索引元素
+    return this.removeAt(position);
+  }
+
+  isEmpty() {
+    return this.length === 0;
+  }
+
+  size() {
+    return this.length;
+  }
 }
 ```

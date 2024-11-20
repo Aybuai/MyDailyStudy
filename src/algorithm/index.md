@@ -618,5 +618,21 @@ class DoublyLinkedList {
       return current.data;
     }
   }
+
+  indexOf(data) {
+    // 定义变量
+    let current = this.head;
+    let index = 0;
+
+    while (current) {
+      if (current.data === data) {
+        return index;
+      }
+      current = current.next;
+      index += 1;
+    }
+
+    return -1;
+  }
 }
 ```

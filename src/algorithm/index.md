@@ -285,7 +285,7 @@ console.log(qe);
 - insert(position, element) 向列表指定位置插入一个新元素
 - get(position) 获取对应位置元素
 - indexOf(element) 返回元素在列表中的索引，如果列表没有该元素则返回 -1
-- update(position) 修改某个位置的元素
+- update(position, element) 修改某个位置的元素
 - removeAt(position) 从列表的特定位置移除一项
 - remove(element) 从列表中移除一项
 - isEmpty() 如果链表中不包含任何元素，返回 true，如果链表长度大于 0 则返回 false
@@ -403,6 +403,22 @@ class LinkedList {
     }
 
     return -1;
+  }
+
+  // 修改某个位置元素
+  update(position, data) {
+    // 越界判断
+    if (position < 0 || position >= this.length) return false;
+
+    let current = this.head;
+    let index = 0;
+
+    while (index++ < position) {
+      current = current.next;
+    }
+
+    current.data = data;
+    return true;
   }
 }
 ```

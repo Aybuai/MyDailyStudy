@@ -664,5 +664,68 @@ class DoublyLinkedList {
 
     return true;
   }
+
+  removeAt(position) {
+    // 越界判断
+    if (position < 0 || position >= this.length) return null;
+
+    let current = this.head;
+    // 当只存在一个数据时
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      if (position === 0) {
+        // 删除第一个元素
+        this.head.next.prev = null;
+        this.head = this.head.next;
+      } else if (position === this.length - 1) {
+        // 删除最后一个元素
+        current = this.tail;
+
+        current.prev.next = null;
+        this.tail = current.prev;
+      } else {
+        // 其他情况
+        let index = 0;
+
+        while (index++ < position) {
+          current = current.next;
+        }
+
+        current.prev.next = current.next;
+        current.next.prev = current.prev;
+      }
+    }
+
+    // length -1
+    this.length -= 1;
+
+    return current.data;
+  }
+
+  remove(data) {
+    const position = this.indexOf(data);
+
+    return this.removeAt(position);
+  }
+
+  isEmpty() {
+    return this.length === 0;
+  }
+
+  size() {
+    return this.length;
+  }
+
+  // 获取链表第一个元素值
+  getHead() {
+    return this.head.data;
+  }
+
+  // 获取链表最后一个元素值
+  getTail() {
+    return this.tail.data;
+  }
 }
 ```

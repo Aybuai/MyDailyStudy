@@ -776,5 +776,24 @@ class Set {
   values() {
     return Object.keys(this.items);
   }
+
+  // 集合间的操作
+
+  // 并集 A ∪ B
+  union(otherSet) {
+    let unionSet = new this.Set();
+
+    let values = this.values();
+    for (let i = 0; i < values.length; i++) {
+      unionSet.add(values[i]);
+    }
+
+    values = otherSet.values();
+    for (let i = 0; i < values.length; i++) {
+      unionSet.add(values[i]);
+    }
+
+    return unionSet;
+  }
 }
 ```

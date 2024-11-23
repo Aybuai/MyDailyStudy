@@ -795,5 +795,46 @@ class Set {
 
     return unionSet;
   }
+
+  // 交集 A ∩ B
+  intersection(otherSet) {
+    const intersectionSet = new this.Set();
+
+    const values = this.values();
+    for (let i = 0; i < values.length; i++) {
+      if (otherSet.has(values[i])) {
+        intersectionSet.add(values[i]);
+      }
+    }
+
+    return intersectionSet;
+  }
+
+  // 差集
+  difference(otherSet) {
+    const differenceSet = new this.Set();
+
+    const values = this.values();
+    for (let i = 0; i < values.length; i++) {
+      if (!otherSet.has(values[i])) {
+        differenceSet.add(values[i]);
+      }
+    }
+
+    return differenceSet;
+  }
+
+  // 子集
+  subset(otherSet) {
+    const values = this.values();
+
+    for (let i = 0; i < values.length; i++) {
+      if (!otherSet.has(values[i])) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }
 ```

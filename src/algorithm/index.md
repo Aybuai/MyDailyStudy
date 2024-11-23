@@ -729,3 +729,52 @@ class DoublyLinkedList {
   }
 }
 ```
+
+### 集合
+
+相当于一个特殊的数组，内部元素不能重复且是无序的。es6 有关键字 Set 来声明。
+
+- add(value) 向集合中添加一个新元素
+- remove(value) 从集合中移除某个元素
+- has(value) 如果值在集合中，返回 true，否则返回 false
+- clear() 移除集合中所有项
+- size() 返回集合所包含元素的数量
+- values() 返回一个包含集合中所有值的数组
+
+```js
+class Set {
+  // 属性
+  items = {};
+
+  // 方法
+  has(value) {
+    return this.items.hasOwnProperty(value);
+  }
+
+  add(value) {
+    if (this.has(value)) return false;
+
+    this.items[value] = value;
+    return true;
+  }
+
+  remove(value) {
+    if (!this.has(value)) return false;
+
+    delete this.items[value];
+    return true;
+  }
+
+  clear() {
+    this.items = {};
+  }
+
+  size() {
+    return Object.keys(this.items).length;
+  }
+
+  values() {
+    return Object.keys(this.items);
+  }
+}
+```

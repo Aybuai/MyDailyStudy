@@ -875,4 +875,4 @@ class Set {
 - 二次探测：主要是 `index + n^2` 步长去插入/查找操作(n 为 1,2,3,4...)
 - 再哈希法：主要是 再次哈希位置，公式如下：<br>
   stepSize = constant - (key % constant)<br>
-  constant 是质数，且小于数组的容量<br>
+  constant 是质数，且小于数组的容量。<br>

@@ -159,3 +159,6 @@ function quickSort(arr) {
 }
 const arr = [1, 3, 2, 5, 4, 7, 6];
 console.log(quickSort(arr));
+
+// 实现一个拼手气抢红包算法
+// 提供了一个RedPackage的类，初始化时传入红包金额和个数，需要实现一个openRedPackage方法，每调一次都进行一次“抢红包”，并以console.log的形式输出抢到的红包金额。
